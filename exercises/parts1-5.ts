@@ -1,7 +1,7 @@
 // URL for the instructions: 
 // https://education.launchcode.org/intro-to-professional-web-dev/chapters/typescript/exercises.html 
 
-
+import { SpaceLocation } from './SpaceLocation';
 // Part 1: Declare (5) Variables With Type
 // let spacecraftName:	string	= 'Determination'
 // let speedMph: number = 17500
@@ -51,6 +51,10 @@ class Spacecraft {
     let daysToDesitination = hoursToDestination /24;
     return daysToDesitination;
     }
+
+    printDaysToLocation(location: SpaceLocation) {
+        console.log(`${this.name} would take ${this.getDaysToLocation(location.kilometersAway)} days to get to ${location.name}.`);
+     }
 }
 
 
@@ -61,13 +65,19 @@ let spaceShuttle = new Spacecraft('Determination', 17500);
 
 // Move your output statements from part 3 here. Update the template literals use the
 // instance of the class.
-console.log(`${spaceShuttle.name} would take ${spaceShuttle.getDaysToLocation(kilometersToMars)} to get to Mars.`);
-console.log(`${spaceShuttle.name} would take ${spaceShuttle.getDaysToLocation(kilometersToTheMoon)} to get to the Moon.`);
+
+
 
 // Part 5: Export and Import the SpaceLocation Class
 // Add the required import statement BEFORE the part 1 concent.
 
 
 // Add the printDaysToLocation function to the Spacecraft class.
-
+spaceShuttle.printDaysToLocation(new SpaceLocation('Mars', kilometersToMars));
+spaceShuttle.printDaysToLocation(new SpaceLocation('the Moon', kilometersToTheMoon));
 // Paste in the code from step 6 here:
+
+// KaelasWkstation:exercises mac2$ tsc parts1-5.ts
+// KaelasWkstation:exercises mac2$ node parts1-5.js
+// Determination would take 332.67857142857144 days to get to Mars.
+// Determination would take 0.5683628571428571 days to get to the Moon.
